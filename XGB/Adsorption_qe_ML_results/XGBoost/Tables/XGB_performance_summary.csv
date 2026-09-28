@@ -1,0 +1,5 @@
+Evaluation,N_or_evaluations,R2,R2_SD,MAE,MAE_SD,RMSE,RMSE_SD,Notes
+Training,143,0.9902591442912956,,7.412470541950901,,11.612178794807862,,Model fitted on this dataset.
+Validation,70,0.7319551939843555,,28.096121365629607,,51.50102806863852,,Fixed hold-out validation set; not used for model fitting or internal CV.
+External validation,19,0.7670024952410489,,42.01863480417352,,74.48672777501578,,Independent external-validation dataset.
+Repeated 5-fold CV ×10,50,0.7768602852705112,0.1342372737609806,28.62004046902275,6.932970949627092,49.8917828268831,13.37530581870253,Mean ± sample SD across 50 internal validation folds; performed on Training set only.

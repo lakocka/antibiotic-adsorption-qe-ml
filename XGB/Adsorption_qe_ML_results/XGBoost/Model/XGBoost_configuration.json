@@ -1,0 +1,122 @@
+{
+  "run_timestamp": "2026-09-28T14:25:15",
+  "dataset_file": "dataset.csv",
+  "external_validation_file": "dataset_EV.csv",
+  "features": [
+    "MLOGP",
+    "BET_m2_g",
+    "Dose_g_L",
+    "pH",
+    "Contact_time_min",
+    "C0_mg_L",
+    "Temperature_C"
+  ],
+  "target": "qe_mg_g",
+  "split_rule": "validation_idx = list(range(2, len(model_df) - 1, 3))",
+  "split_terminology": {
+    "training": "143-record subset used for model fitting",
+    "validation": "fixed 70-record hold-out subset, not used for fitting or internal CV",
+    "external_validation": "independent 19-record dataset"
+  },
+  "model_parameters": {
+    "objective": "reg:squarederror",
+    "base_score": null,
+    "booster": null,
+    "callbacks": null,
+    "colsample_bylevel": null,
+    "colsample_bynode": null,
+    "colsample_bytree": 0.8,
+    "device": null,
+    "early_stopping_rounds": null,
+    "enable_categorical": true,
+    "eval_metric": null,
+    "feature_types": null,
+    "feature_weights": null,
+    "gamma": null,
+    "grow_policy": null,
+    "importance_type": null,
+    "interaction_constraints": null,
+    "learning_rate": 0.05,
+    "max_bin": null,
+    "max_cat_threshold": null,
+    "max_cat_to_onehot": null,
+    "max_delta_step": null,
+    "max_depth": 3,
+    "max_leaves": null,
+    "min_child_weight": null,
+    "missing": NaN,
+    "monotone_constraints": null,
+    "multi_strategy": null,
+    "n_estimators": 300,
+    "n_jobs": -1,
+    "num_parallel_tree": null,
+    "random_state": 42,
+    "reg_alpha": null,
+    "reg_lambda": null,
+    "sampling_method": null,
+    "scale_pos_weight": null,
+    "subsample": 0.8,
+    "tree_method": null,
+    "validate_parameters": null,
+    "verbosity": null
+  },
+  "n_training": 143,
+  "n_validation": 70,
+  "n_external_validation": 19,
+  "fixed_dataset_performance": {
+    "Training": {
+      "N": 143,
+      "R2": 0.9902591442912956,
+      "MAE": 7.412470541950901,
+      "RMSE": 11.612178794807862
+    },
+    "Validation": {
+      "N": 70,
+      "R2": 0.7319551939843555,
+      "MAE": 28.096121365629607,
+      "RMSE": 51.50102806863852
+    },
+    "External validation": {
+      "N": 19,
+      "R2": 0.7670024952410489,
+      "MAE": 42.01863480417352,
+      "RMSE": 74.48672777501578
+    }
+  },
+  "internal_cross_validation": {
+    "method": "RepeatedKFold",
+    "n_splits": 5,
+    "n_repeats": 10,
+    "n_validation_fold_evaluations": 50,
+    "random_state": 42,
+    "performed_on": "Training set only",
+    "reporting": "mean ± sample standard deviation across 50 validation folds",
+    "R2_mean": 0.7768602852705112,
+    "R2_SD": 0.1342372737609806,
+    "MAE_mean": 28.62004046902275,
+    "MAE_SD": 6.932970949627092,
+    "RMSE_mean": 49.8917828268831,
+    "RMSE_SD": 13.37530581870253
+  },
+  "applicability_domain": {
+    "method": "standardized predictor-space leverage + RMSE-normalized residual",
+    "leverage_threshold_h_star": 0.16783216783216784,
+    "residual_limit": 3.0
+  },
+  "software_versions": {
+    "python": "3.13.9",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "scikit_learn": "1.7.2",
+    "shap": "0.52.0",
+    "matplotlib": "3.10.6",
+    "xgboost": "3.3.0"
+  },
+  "SHAP": {
+    "explainer": "shap.TreeExplainer",
+    "model_output": "raw",
+    "check_additivity": true,
+    "evaluation_dataset": "Validation",
+    "max_additivity_difference": 0.000152587890625
+  }
+}

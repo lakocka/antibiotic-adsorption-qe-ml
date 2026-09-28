@@ -1,0 +1,100 @@
+{
+  "run_timestamp": "2026-09-28T14:22:19",
+  "dataset_file": "dataset.csv",
+  "external_validation_file": "dataset_EV.csv",
+  "features": [
+    "MLOGP",
+    "C0_mg_L",
+    "pH",
+    "Temperature_C",
+    "Dose_g_L",
+    "Contact_time_min",
+    "BET_m2_g"
+  ],
+  "target": "qe_mg_g",
+  "split_rule": "validation_idx = list(range(2, len(model_df) - 1, 3))",
+  "split_terminology": {
+    "training": "143-record subset used for model fitting",
+    "validation": "fixed 70-record hold-out subset, not used for fitting or internal CV",
+    "external_validation": "independent 19-record dataset"
+  },
+  "model_parameters": {
+    "bootstrap": true,
+    "ccp_alpha": 0.0,
+    "criterion": "squared_error",
+    "max_depth": null,
+    "max_features": 1.0,
+    "max_leaf_nodes": null,
+    "max_samples": null,
+    "min_impurity_decrease": 0.0,
+    "min_samples_leaf": 2,
+    "min_samples_split": 2,
+    "min_weight_fraction_leaf": 0.0,
+    "monotonic_cst": null,
+    "n_estimators": 500,
+    "n_jobs": -1,
+    "oob_score": false,
+    "random_state": 42,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "n_training": 143,
+  "n_validation": 70,
+  "n_external_validation": 19,
+  "fixed_dataset_performance": {
+    "Training": {
+      "N": 143,
+      "R2": 0.930950211363439,
+      "MAE": 15.153754684927637,
+      "RMSE": 30.916928086971588
+    },
+    "Validation": {
+      "N": 70,
+      "R2": 0.7030658422720935,
+      "MAE": 30.799379296388963,
+      "RMSE": 54.205365874727306
+    },
+    "External validation": {
+      "N": 19,
+      "R2": 0.758259082915345,
+      "MAE": 42.90389244992856,
+      "RMSE": 75.87144293875986
+    }
+  },
+  "internal_cross_validation": {
+    "method": "RepeatedKFold",
+    "n_splits": 5,
+    "n_repeats": 10,
+    "n_validation_fold_evaluations": 50,
+    "random_state": 42,
+    "performed_on": "Training set only",
+    "reporting": "mean ± sample standard deviation across 50 validation folds",
+    "R2_mean": 0.7185363235364552,
+    "R2_SD": 0.2136534713316203,
+    "MAE_mean": 31.269125196086378,
+    "MAE_SD": 8.746756293495453,
+    "RMSE_mean": 55.88816346493033,
+    "RMSE_SD": 18.04339017804259
+  },
+  "applicability_domain": {
+    "method": "standardized predictor-space leverage + RMSE-normalized residual",
+    "leverage_threshold_h_star": 0.16783216783216784,
+    "residual_limit": 3.0
+  },
+  "software_versions": {
+    "python": "3.13.9",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "scikit_learn": "1.7.2",
+    "shap": "0.52.0",
+    "matplotlib": "3.10.6"
+  },
+  "SHAP": {
+    "explainer": "shap.TreeExplainer",
+    "feature_perturbation": "tree_path_dependent",
+    "model_output": "raw",
+    "check_additivity": true,
+    "evaluation_dataset": "Validation",
+    "max_additivity_difference": 1.8758328224066645e-12
+  }
+}
