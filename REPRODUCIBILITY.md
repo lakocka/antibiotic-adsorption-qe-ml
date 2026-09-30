@@ -27,16 +27,12 @@ pip install -r requirements.txt
 
 ## 3. Input data
 
-Both notebooks resolve the input files from any of the following locations:
-
-1. the notebook working directory,
-2. `data/` under the current working directory,
-3. `../data/` relative to the current working directory.
+Both notebooks discover the repository root from the current working directory or its parents. Keep the full extracted folder structure intact.
 
 Repository inputs:
 
-- `data/dataset.csv` — 213 modeling observations,
-- `data/dataset_EV.csv` — 19 external-validation observations.
+- `MASTER_DATASET/dataset.csv` — 213 modeling observations,
+- `MASTER_DATASET_EV/dataset_EV.csv` — 19 external-validation observations.
 
 Both files use semicolon delimiters and the standardized columns:
 
@@ -46,8 +42,8 @@ Both files use semicolon delimiters and the standardized columns:
 
 Run, in any order:
 
-- `notebooks/RF_qe.ipynb`
-- `notebooks/XGB_qe.ipynb`
+- `RF/RF_qe.ipynb`
+- `XGB/XGB_qe.ipynb`
 
 Each notebook uses a fixed random state and the predefined Training/Validation split.
 
@@ -55,23 +51,14 @@ The internal-validation procedure is **RepeatedKFold(n_splits=5, n_repeats=10, r
 
 ## 5. Output location
 
-The notebooks create a single top-level folder on the user's Desktop:
+The notebooks write new outputs to one folder inside the repository:
 
-```text
-Adsorption_qe_ML_results/
-├── Random_Forest/
-│   ├── Figures/
-│   ├── Tables/
-│   └── Model/
-└── XGBoost/
-    ├── Figures/
-    ├── Tables/
-    └── Model/
-```
+- `Adsorption_qe_ML_results/Random_Forest/<timestamp>/`
+- `Adsorption_qe_ML_results/XGBoost/<timestamp>/`
 
-Each model directory also receives its consolidated `*_qe_complete_results.xlsx` workbook.
+Each run contains `Figures/`, `Tables/`, `Model/` and a consolidated Excel workbook. Timestamped run directories avoid overwriting previous outputs. The timestamp is generated when the setup cell runs; restart and run all cells to begin a new run.
 
-The `results/` directory in this repository is a frozen copy of a completed analysis run.
+Existing reference outputs remain in `RF/Adsorption_qe_ML_results/Random_Forest/` and `XGB/Adsorption_qe_ML_results/XGBoost/`.
 
 ## 6. Expected evaluation design
 
@@ -93,3 +80,7 @@ sha256sum -c MANIFEST.sha256
 ```
 
 On Windows, checksums can also be verified with `Get-FileHash` in PowerShell.
+
+## Scope of the September 30 correction
+
+Input discovery was tested from the root and both notebook folders. Model definitions, feature order, split, CV and export calculations remain unchanged. The complete training was not rerun for this file-layout-only correction. Notebook embedded outputs were cleared to avoid displaying stale paths; reference result files are preserved.
