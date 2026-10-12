@@ -1,4 +1,0 @@
-Evaluation,N_or_evaluations,R2,R2_SD,MAE,MAE_SD,RMSE,RMSE_SD,Notes
-Training,155,0.9400854569880737,,13.57771107315716,,28.341748994605354,,Model fitted on this dataset.
-Test,77,0.7343879088359363,,32.188246037638166,,60.23745409084524,,Fixed hold-out Test set; selected before fitting from the qe-sorted dataset and not used for fitting or internal CV.
-Repeated 5-fold CV ×10,50,0.7466791349618286,0.10539025453101337,30.331082127180956,9.453370949745606,54.34202550319083,20.373390497936093,Mean ± sample SD across 50 internal validation folds; performed on Training set only.
