@@ -1,0 +1,117 @@
+{
+  "run_timestamp": "2026-10-11T11:46:12",
+  "dataset_file": "dataset_232.csv",
+  "dataset_n": 232,
+  "features": [
+    "MLOGP",
+    "BET_m2_g",
+    "Dose_g_L",
+    "pH",
+    "Contact_time_min",
+    "C0_mg_L",
+    "Temperature_C"
+  ],
+  "target": "qe_mg_g",
+  "data_order_before_split": "sorted by qe_mg_g ascending using stable mergesort",
+  "split_rule": "test_idx = list(range(2, len(model_df) - 1, 3))",
+  "split_terminology": {
+    "training": "155-record subset used for model fitting",
+    "test": "fixed 77-record hold-out subset, not used for fitting or internal CV",
+    "external_validation": "not used in this revised two-set analysis"
+  },
+  "model_parameters": {
+    "objective": "reg:squarederror",
+    "base_score": null,
+    "booster": null,
+    "callbacks": null,
+    "colsample_bylevel": null,
+    "colsample_bynode": null,
+    "colsample_bytree": 0.8,
+    "device": null,
+    "early_stopping_rounds": null,
+    "enable_categorical": true,
+    "eval_metric": null,
+    "feature_types": null,
+    "feature_weights": null,
+    "gamma": null,
+    "grow_policy": null,
+    "importance_type": null,
+    "interaction_constraints": null,
+    "learning_rate": 0.05,
+    "max_bin": null,
+    "max_cat_threshold": null,
+    "max_cat_to_onehot": null,
+    "max_delta_step": null,
+    "max_depth": 3,
+    "max_leaves": null,
+    "min_child_weight": null,
+    "missing": NaN,
+    "monotone_constraints": null,
+    "multi_strategy": null,
+    "n_estimators": 300,
+    "n_jobs": -1,
+    "num_parallel_tree": null,
+    "random_state": 42,
+    "reg_alpha": null,
+    "reg_lambda": null,
+    "sampling_method": null,
+    "scale_pos_weight": null,
+    "subsample": 0.8,
+    "tree_method": null,
+    "validate_parameters": null,
+    "verbosity": null
+  },
+  "n_training": 155,
+  "n_test": 77,
+  "fixed_dataset_performance": {
+    "Training": {
+      "N": 155,
+      "R2": 0.9927160539935654,
+      "MAE": 7.253441963742781,
+      "RMSE": 9.881977956493937
+    },
+    "Test": {
+      "N": 77,
+      "R2": 0.678548214445051,
+      "MAE": 31.54586780186188,
+      "RMSE": 66.26750339751287
+    }
+  },
+  "internal_cross_validation": {
+    "method": "RepeatedKFold",
+    "n_splits": 5,
+    "n_repeats": 10,
+    "n_validation_fold_evaluations": 50,
+    "random_state": 42,
+    "performed_on": "Training set only",
+    "reporting": "mean ± sample standard deviation across 50 validation folds",
+    "R2_mean": 0.8361976165279217,
+    "R2_SD": 0.07445228515367813,
+    "MAE_mean": 25.331886217198345,
+    "MAE_SD": 7.7000688977988485,
+    "RMSE_mean": 44.10484848587288,
+    "RMSE_SD": 18.153555626250327
+  },
+  "applicability_domain": {
+    "method": "standardized predictor-space leverage + RMSE-normalized residual",
+    "leverage_threshold_h_star": 0.15483870967741936,
+    "residual_limit": 3.0,
+    "evaluated_on": "Training and fixed Test sets"
+  },
+  "software_versions": {
+    "python": "3.13.9",
+    "numpy": "2.3.5",
+    "pandas": "2.3.3",
+    "scikit_learn": "1.7.2",
+    "shap": "0.52.0",
+    "matplotlib": "3.10.6",
+    "xgboost": "3.3.0"
+  },
+  "SHAP": {
+    "explainer": "shap.TreeExplainer",
+    "model_output": "raw",
+    "check_additivity": true,
+    "evaluation_dataset": "Test",
+    "max_additivity_difference": 0.00048828125
+  }
+}
